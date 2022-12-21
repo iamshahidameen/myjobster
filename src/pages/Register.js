@@ -16,6 +16,7 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user, isLoading } = useSelector((store) => store.user);
   const handleChange = (e) => {
     const name = e.target.name;
@@ -43,7 +44,6 @@ const Register = () => {
   const toggleMember = () => {
     return setValues({ ...values, isMember: !values.isMember });
   };
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
