@@ -3,14 +3,22 @@ import { FaTimes } from 'react-icons/fa';
 import Logo from './Logo';
 import { Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { toggleSidebar } from '../features/user/userSlice';
 const SmallSidebar = () => {
-  const { user } = useSelector((state) => state.user);
+  const { isSidebarOpen } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const toggle = () => {
+    dispatch(toggleSidebar());
+  };
   return (
     <Wrapper>
-      <div className={`sidebar-container sidebar-container show-sidebar`}>
+      <div
+        className={`sidebar-container sidebar-container ${
+          isSidebarOpen && 'show-sidebar'
+        }`}
+      >
         <div className="content">
-          <button className="close-btn" onClick={() => console.log('toggle')}>
+          <button className="close-btn" onClick={toggle}>
             <FaTimes />
           </button>
           <header>
