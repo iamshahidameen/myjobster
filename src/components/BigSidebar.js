@@ -11,7 +11,7 @@ const BigSidebar = ({ toggleSidebar }) => {
   };
   return (
     <Wrapper>
-      <div className={`sidebar-container ${isSidebarOpen && 'show-sidebar'}`}>
+      <div className={`sidebar-container ${!isSidebarOpen && 'show-sidebar'}`}>
         <div className="content"> </div>
         <header>
           <Logo />
