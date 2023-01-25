@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../features/user/userSlice';
 import { NavLink } from 'react-router-dom';
 import links from '../utils/links';
+import NavLinks from './NavLinks';
 const SmallSidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -26,24 +27,7 @@ const SmallSidebar = () => {
           <header>
             <Logo />
           </header>
-          <div className="nav-links">
-            {links.map((link) => {
-              const { id, text, path, icon } = link;
-              return (
-                <NavLink
-                  to={path}
-                  key={id}
-                  className={({ isActive }) => {
-                    return isActive ? 'nav-link active' : 'nav-link';
-                  }}
-                  onClick={toggle}
-                >
-                  <span className="icon">{icon}</span>
-                  {text}
-                </NavLink>
-              );
-            })}
-          </div>
+          <NavLinks toggleSidebar={toggle} />
         </div>
       </div>
     </Wrapper>
