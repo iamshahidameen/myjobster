@@ -30,6 +30,7 @@ const AddJob = () => {
       toast.error('please fill all fields');
       return;
     }
+    dispatch(createJob({ position, company, jobLocation, jobType, status }));
   };
 
   const handleJobInput = (e) => {
@@ -76,7 +77,7 @@ const AddJob = () => {
           {/* job type*/}
           <FormRowSelect
             name="jobType"
-            value={status}
+            value={jobType}
             labelText="job type"
             list={jobTypeOptions}
             handleChange={handleJobInput}
