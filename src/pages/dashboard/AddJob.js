@@ -8,6 +8,7 @@ import {
   createJob,
   editJob,
 } from '../../features/job/jobSlice';
+import { useEffect } from 'react';
 const AddJob = () => {
   const {
     isLoading,
@@ -39,7 +40,9 @@ const AddJob = () => {
     dispatch(handleChange({ name, value }));
     console.log(name, value);
   };
-
+  useEffect(() => {
+    dispatch(handleChange({ name: 'jobLocation', value: user.location }));
+  }, []);
   return (
     <Wrapper>
       <form className="form">
