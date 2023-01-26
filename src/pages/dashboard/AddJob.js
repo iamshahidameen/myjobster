@@ -35,6 +35,7 @@ const AddJob = () => {
   const handleJobInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+    dispatch(handleChange({ name, value }));
     console.log(name, value);
   };
 
@@ -84,7 +85,7 @@ const AddJob = () => {
             <button
               type="button"
               className="btn btn-block clear-btn"
-              onClick={() => console.log('first')}
+              onClick={() => dispatch(clearValues())}
             >
               clear
             </button>
