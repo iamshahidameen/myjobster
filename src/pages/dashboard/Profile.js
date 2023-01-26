@@ -22,6 +22,7 @@ const Profile = () => {
       toast.error('Please fill all fields');
       return;
     }
+    dispatch(updateUser(userData));
   };
 
   const handleChange = (e) => {
@@ -30,9 +31,6 @@ const Profile = () => {
 
     setUserData({ ...userData, [name]: value });
   };
-
-  console.log(userData);
-
   return (
     <Wrapper>
       <form className="form" onSubmit={handleSubmit}>
