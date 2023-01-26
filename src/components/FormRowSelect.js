@@ -1,12 +1,23 @@
-const FormRowSelect = () => {
+const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
     <div className="form-row">
-      <label htmlFor="status" className="form-label">
-        status
+      <label htmlFor={name} className="form-label">
+        {labelText || name}
       </label>
-      <select name="status" className="form-select">
-        <option>Option 1</option>
-        <option>Option 2</option>
+      <select
+        name={name}
+        id={name}
+        value={value}
+        className="form-select"
+        onChange={handleChange}
+      >
+        {list.map((option, index) => {
+          return (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          );
+        })}
       </select>
     </div>
   );

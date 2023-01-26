@@ -25,9 +25,18 @@ const AddJob = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!position || !company || !jobLocation) {
+      toast.error('please fill all fields');
+      return;
+    }
   };
 
-  const handleJobInput = (e) => {};
+  const handleJobInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(name, value);
+  };
 
   return (
     <Wrapper>
@@ -35,17 +44,48 @@ const AddJob = () => {
         <h3>{isEditing ? 'edit job' : 'add job'}</h3>
         <div className="form-center">
           {/* position */}
-          <FormRow type="text" name="position" />
+          <FormRow
+            type="text"
+            name="position"
+            value={position}
+            handleChange={handleJobInput}
+          />
           {/* company */}
-          <FormRow type="text" name="company" />
+          <FormRow
+            type="text"
+            name="company"
+            value={company}
+            handleChange={handleJobInput}
+          />
           {/* jobLocation */}
-          <FormRow type="text" name="jobLocation" labelText="job location" />
+          <FormRow
+            type="text"
+            name="jobLocation"
+            labelText="job location"
+            value={jobLocation}
+            handleChange={handleJobInput}
+          />
           {/* status */}
-          <FormRowSelect name="status" />
+          <FormRowSelect
+            name="status"
+            value={status}
+            list={statusOptions}
+            handleChange={handleJobInput}
+          />
           {/* job type*/}
-          <FormRowSelect name="jobType" labelText="job type" />
+          <FormRowSelect
+            name="jobType"
+            value={status}
+            labelText="job type"
+            list={jobTypeOptions}
+            handleChange={handleJobInput}
+          />
           <div className="btn-container">
-            <button type="button" className="btn btn-block clear-btn">
+            <button
+              type="button"
+              className="btn btn-block clear-btn"
+              onClick={() => console.log('first')}
+            >
               clear
             </button>
             <button
