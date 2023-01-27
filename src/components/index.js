@@ -3,6 +3,7 @@ import FormRow from './FormRow';
 import FormRowSelect from './FormRowSelect';
 import Job from './Job';
 import JobsContainer from './JobsContainer';
+import Loading from './Loading';
 import Logo from './Logo';
 import Navbar from './Navbar';
 import NavLinks from './NavLinks';
@@ -20,4 +21,5 @@ export {
   SearchContainer,
   JobsContainer,
   Job,
+  Loading,
 };
