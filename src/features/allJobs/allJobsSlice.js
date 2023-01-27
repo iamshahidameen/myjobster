@@ -11,7 +11,7 @@ const initialFilterState = {
 };
 
 const initialState = {
-  isLoading: 'false',
+  isLoading: true,
   jobs: [],
   totalJobs: 0,
   numOfPages: 1,
@@ -21,7 +21,7 @@ const initialState = {
   ...initialFilterState,
 };
 const allJobsSlice = createSlice({
-  name: 'alljobs',
+  name: 'allJobs',
   initialState,
 });
 
