@@ -2,6 +2,7 @@ import BigSidebar from './BigSidebar';
 import FormRow from './FormRow';
 import FormRowSelect from './FormRowSelect';
 import Job from './Job';
+import JobInfo from './JobInfo';
 import JobsContainer from './JobsContainer';
 import Loading from './Loading';
 import Logo from './Logo';
@@ -22,4 +23,5 @@ export {
   JobsContainer,
   Job,
   Loading,
+  JobInfo,
 };
