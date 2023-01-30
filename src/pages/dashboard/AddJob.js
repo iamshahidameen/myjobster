@@ -38,7 +38,6 @@ const AddJob = () => {
     const name = e.target.name;
     const value = e.target.value;
     dispatch(handleChange({ name, value }));
-    console.log(name, value);
   };
   useEffect(() => {
     dispatch(handleChange({ name: 'jobLocation', value: user.location }));
