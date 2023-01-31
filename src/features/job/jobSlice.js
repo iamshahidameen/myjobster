@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import customFetch from '../../utils/axios';
 import { getUserFromLocalStorage } from '../../utils/localStorage';
-import { HideLoading, showLoading, getAllJobs } from '../allJobs/allJobsSlice';
+import { hideLoading, showLoading, getAllJobs } from '../allJobs/allJobsSlice';
 import { logoutUser } from '../user/userSlice';
 
 const initialState = {
@@ -34,6 +34,25 @@ export const createJob = createAsyncThunk(
         thunkAPI.dispatch(logoutUser());
         return thunkAPI.rejectWithValue('unauthorized! please login again');
       }
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const deleteJob = createAsyncThunk(
+  'job/deleteJob',
+  async (jobId, thunkAPI) => {
+    thunkAPI.dispatch(showLoading());
+    try {
+      const resp = await customFetch.delete(`/jobs/${jobId}`, {
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      });
+      thunkAPI.dispatch(getAllJobs());
+      return resp.data;
+    } catch (error) {
+      thunkAPI.dispatch(hideLoading());
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
