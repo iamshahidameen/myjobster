@@ -50,7 +50,7 @@ export const deleteJob = createAsyncThunk(
         },
       });
       thunkAPI.dispatch(getAllJobs());
-      return resp.data;
+      return resp.data.msg;
     } catch (error) {
       thunkAPI.dispatch(hideLoading());
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -71,6 +71,9 @@ const jobSlice = createSlice({
         jobLocation: getUserFromLocalStorage()?.location || '',
       };
     },
+    setEditJob: (state, { payload }) => {
+      return { ...state, isEditing: true, ...payload };
+    },
   },
   extraReducers: {
     [createJob.pending]: (state) => {
@@ -84,7 +87,13 @@ const jobSlice = createSlice({
       state.isLoading = false;
       toast.error(payload);
     },
+    [deleteJob.fulfilled]: (state, { payload }) => {
+      toast.success(payload);
+    },
+    [deleteJob.rejected]: (state, { payload }) => {
+      toast.error(payload);
+    },
   },
 });
-export const { handleChange, clearValues } = jobSlice.actions;
+export const { handleChange, clearValues, setEditJob } = jobSlice.actions;
 export default jobSlice.reducer;
