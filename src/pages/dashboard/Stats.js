@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { StatsContainer, Loading, ChartsContainer } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
 import { showStats } from '../../features/allJobs/allJobsSlice';
 
 const Stats = () => {
