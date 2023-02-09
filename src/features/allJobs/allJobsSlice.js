@@ -58,6 +58,12 @@ const allJobsSlice = createSlice({
     hideLoading: (state) => {
       state.isLoading = false;
     },
+    handleChange: (state, { payeload: { name, value } }) => {
+      state[name] = value;
+    },
+    clearFilters: (state) => {
+      state = { ...state, ...initialFilterState };
+    },
   },
   extraReducers: {
     [getAllJobs.pending]: (state) => {
