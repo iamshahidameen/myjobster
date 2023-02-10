@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import customFetch from '../../utils/axios';
 import { getAllJobsThunk, showStatsThunk } from './allJobsThunk';
 
 const initialFilterState = {
@@ -46,6 +45,7 @@ const allJobsSlice = createSlice({
     changePage: (state, { payload }) => {
       state.page = payload;
     },
+    clearAllJobsState: () => initialState,
   },
   extraReducers: {
     [getAllJobs.pending]: (state) => {
@@ -81,6 +81,7 @@ export const {
   hideLoading,
   handleChange,
   clearFilters,
+  clearAllJobsState,
   changePage,
 } = allJobsSlice.actions;
 
