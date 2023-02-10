@@ -62,7 +62,7 @@ const allJobsSlice = createSlice({
       state[name] = value;
     },
     clearFilters: (state) => {
-      return (state = { ...state, ...initialFilterState });
+      return { ...state, ...initialFilterState };
     },
   },
   extraReducers: {

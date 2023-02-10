@@ -13,6 +13,7 @@ const SearchContainer = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(clearFilters());
   };
   return (
     <Wrapper>
